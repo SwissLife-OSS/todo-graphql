@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoGraphQL", "TodoGraphQL\TodoGraphQL.csproj", "{AE7017DB-F1DE-47B7-BA22-6B4D2F891501}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{F9A8D8E2-6CAA-487D-91FD-7979014CE0EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AE7017DB-F1DE-47B7-BA22-6B4D2F891501}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE7017DB-F1DE-47B7-BA22-6B4D2F891501}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE7017DB-F1DE-47B7-BA22-6B4D2F891501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A8D8E2-6CAA-487D-91FD-7979014CE0EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A8D8E2-6CAA-487D-91FD-7979014CE0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A8D8E2-6CAA-487D-91FD-7979014CE0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A8D8E2-6CAA-487D-91FD-7979014CE0EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
