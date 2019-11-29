@@ -25,7 +25,7 @@ namespace TodoGraphQL
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddInMemorySubscriptionProvider();
-            services.AddSingleton<TodoService>();
+            services.AddSingleton<TodoRepository>();
 
             services.AddGraphQL(Schema.Create,
                 new QueryExecutionOptions

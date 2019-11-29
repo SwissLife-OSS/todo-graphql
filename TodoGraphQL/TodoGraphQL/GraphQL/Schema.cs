@@ -8,6 +8,9 @@ namespace TodoGraphQL.GraphQL
         public static ISchema Create(IServiceProvider serviceProvider) =>
             SchemaBuilder.New()
                 .AddServices(serviceProvider)
+                .AddQueryType<Query>()
+                .AddMutationType<Mutation>()
+                .AddSubscriptionType<Subscription>()
                 .AddType<TodoType>()
                 .Create();
     }
