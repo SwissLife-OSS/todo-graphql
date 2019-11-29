@@ -1,6 +1,7 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend;
+using HotChocolate;
+using HotChocolate.Subscriptions;
 using TodoGraphQL.Data;
 
 namespace TodoGraphQL.GraphQL
@@ -14,9 +15,13 @@ namespace TodoGraphQL.GraphQL
             _todoRepository = todoRepository;
         }
 
-        public async Task<Todo> Add(Todo todo)
+        public async Task<Todo> Add(
+            Todo todo,
+            [Service] IEventSender eventSender)
         {
-            return await _todoRepository.Add(todo);
+            await _todoRepository.Add(todo);
+            await eventSender.SendAsync(new OnTodoAdded(todo));
+            return todo;
         }
     }
 }
