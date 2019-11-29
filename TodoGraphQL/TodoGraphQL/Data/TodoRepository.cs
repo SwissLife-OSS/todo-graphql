@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoGraphQL.Data;
 
-namespace Backend
+namespace TodoGraphQL.Data
 {
     public class TodoRepository
     {

@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend;
 using TodoGraphQL.Data;
 
-namespace TodoGraphQL.GraphQL
+namespace TodoGraphQL.Types
 {
     public class Query
     {

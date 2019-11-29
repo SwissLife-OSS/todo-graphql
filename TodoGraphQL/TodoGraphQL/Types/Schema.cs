@@ -1,17 +1,18 @@
 using System;
 using HotChocolate;
 
-namespace TodoGraphQL.GraphQL
+namespace TodoGraphQL.Types
 {
     public class Schema
     {
         public static ISchema Create(IServiceProvider serviceProvider) =>
             SchemaBuilder.New()
                 .AddServices(serviceProvider)
-                .AddQueryType<Query>()
-                .AddMutationType<Mutation>()
-                .AddSubscriptionType<Subscription>()
-                .AddType<TodoType>()
+                .AddQueryType<QueryType>()
+                .AddMutationType<MutationType>()
+                .AddSubscriptionType<SubscriptionType>()
+                .AddType<TodoInputType>()
+                .AddType<TodoPayload>()
                 .Create();
     }
 }

@@ -1,10 +1,10 @@
+using System;
 using System.Threading.Tasks;
-using Backend;
 using HotChocolate;
 using HotChocolate.Subscriptions;
 using TodoGraphQL.Data;
 
-namespace TodoGraphQL.GraphQL
+namespace TodoGraphQL.Types
 {
     public class Mutation
     {
@@ -16,9 +16,10 @@ namespace TodoGraphQL.GraphQL
         }
 
         public async Task<Todo> Add(
-            Todo todo,
+            TodoInput input,
             [Service] IEventSender eventSender)
         {
+            var todo = new Todo(Guid.NewGuid(), input.Title, input.Status);
             await _todoRepository.Add(todo);
             await eventSender.SendAsync(new OnTodoAdded(todo));
             return todo;

@@ -1,15 +1,16 @@
 using HotChocolate.Types;
 using TodoGraphQL.Data;
 
-namespace TodoGraphQL.GraphQL
+namespace TodoGraphQL.Types
 {
-    public class TodoType
+    public class TodoPayload
         : ObjectType<Todo>
     {
         protected override void Configure(
             IObjectTypeDescriptor<Todo> descriptor)
         {
-            descriptor.BindFieldsExplicitly();
+            descriptor
+                .BindFieldsExplicitly();
 
             descriptor
                 .Field(x => x.Id)
