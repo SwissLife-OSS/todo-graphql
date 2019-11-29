@@ -15,11 +15,6 @@ namespace TodoGraphQL.Data
             return Task.FromResult(_items.AsEnumerable());
         }
 
-        public Task<Todo> Get(Guid id)
-        {
-            return Task.FromResult(_items.FirstOrDefault(x => x.Id == id));
-        }
-
         public Task Add(Todo todo)
         {
             _items.Add(todo);
