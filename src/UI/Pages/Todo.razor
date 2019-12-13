@@ -1,33 +1,33 @@
 @page "/todo"
 
-<h1>Todo (@todos.Count(todo => !todo.IsDone))</h1>
+<h2>Hey! Open Todo's: @Todos.Count(todo => !todo.IsDone)</h2>
 
-You can now create todo items
+You can create todo items with the mask below.
 
-<ul>
-  @foreach (var todo in todos)
+<div id="create-todo">
+  <input id="create-todo-input" class="form-control" placeholder="What do you wanna do?" @bind="NewTodo" />
+  <button id="create-todo-button" class="btn btn-primary" @onclick="AddTodo">Create todo</button>
+</div>
+
+<div id="todo-list">
+  @foreach (var todo in Todos)
   {
-    <div class="card">
-      <div class="card-body form-group">
-        <input type="checkbox" @bind="todo.IsDone" />
-        <input @bind="todo.Title" class="form-control"/>
+      <div class="todo-items" id="@todo.Id">
+        <input class="todo-items-checkbox" type="checkbox" @bind="todo.IsDone" />
+        <input @bind="todo.Title" class="form-control todo-items-item @TodoItemCssClass(todo.IsDone)"/>
       </div>
-    </div>
   }
-</ul>
-
-<input placeholder="What do you wanna do?" @bind="newTodo" />
-<button @onclick="AddTodo">Create todo</button>
-
+</div>
 
 @code {
-  private IList<TodoItem> todos = new List<TodoItem>();
-    private string newTodo;
+  private IList<TodoItem> Todos = new List<TodoItem>();
+  private string NewTodo;
+  private string TodoItemCssClass(bool isDone) => isDone ? "todo-items-item--completed" : "todo-items-item--active";
 
     private void AddTodo() {
-      if(!string.IsNullOrWhiteSpace(newTodo)) {
-        todos.Add(new TodoItem{Title = newTodo});
-        newTodo = string.Empty;
+      if(!string.IsNullOrWhiteSpace(NewTodo)) {
+        Todos.Add(new TodoItem{Id = Guid.NewGuid(), Title = NewTodo});
+        NewTodo = string.Empty;
       }
     }
 }

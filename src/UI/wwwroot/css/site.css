@@ -181,3 +181,41 @@ app {
         display: block;
     }
 }
+
+#todo-list,
+#create-todo {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.todo-items {
+  display: grid;
+}
+
+.todo-items-checkbox {
+  grid-column: 1;
+  margin: auto;
+}
+
+.todo-items-item {
+  grid-column: 2 / 11;
+  margin: auto;
+  border: none;
+}
+
+.todo-items-item--completed {
+  text-decoration: line-through;
+}
+
+#create-todo {
+  display: grid;
+}
+
+#create-todo-input {
+  grid-column: 1 / 4;
+}
+
+#create-todo-button {
+  grid-column: 5;
+}
+
