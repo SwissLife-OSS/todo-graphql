@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Builder;
 using HotChocolate.Subscriptions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
+using Squadron;
 using TodoGraphQL.Data;
 using Schema = TodoGraphQL.Types.Schema;
 
@@ -21,8 +23,15 @@ namespace TodoGraphQL
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<MongoResource>();
+            services.AddHostedService<AppResourceService>();
             services.AddInMemorySubscriptionProvider();
-            services.AddSingleton<TodoRepository>();
+            services.AddSingleton(sp =>
+            {
+                var mongoResource = sp.GetService<MongoResource>();
+                var client = new MongoClient(mongoResource.ConnectionString);
+                return new TodoRepository(client.GetDatabase("Todo"));
+            });
             services.AddGraphQL(Schema.Create,
                 new QueryExecutionOptions
                 {
