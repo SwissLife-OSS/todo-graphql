@@ -1,0 +1,33 @@
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Query {
+  get: [Todo!]!
+}
+
+type Mutation {
+  add(input: TodoInput!): Todo!
+}
+
+type Subscription {
+  onTodo: Todo!
+}
+
+input TodoInput {
+  status: TodoStatus!
+  title: String!
+}
+
+type Todo {
+  id: ID!
+  status: TodoStatus!
+  title: String!
+}
+
+enum TodoStatus {
+  ACTIVE
+  COMPLETED
+}

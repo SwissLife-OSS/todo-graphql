@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Blazor.Hosting;
 
-namespace UI
+namespace TodoGraphQL.UI
 {
     public class Program
     {

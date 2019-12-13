@@ -1,0 +1,7 @@
+query get {
+  get {
+    id
+    status
+    title
+  }
+}

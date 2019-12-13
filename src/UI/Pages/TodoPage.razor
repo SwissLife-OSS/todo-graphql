@@ -1,0 +1,45 @@
+@page "/todo"
+@inject QueryHandler queryHandler
+
+<h2>Hey! Open Todo's: @Todos.Count(todo => todo.Status == TodoStatus.Active)</h2>
+
+You can create todo items with the mask below.
+
+<div id="create-todo">
+  <input id="create-todo-input" class="form-control" placeholder="What do you wanna do?" @bind="NewTodo" />
+  <button id="create-todo-button" class="btn btn-primary" @onclick="AddTodo">Create todo</button>
+</div>
+
+<div id="todo-list">
+  @foreach (var todo in Todos)
+  {
+      <div class="todo-items" id="@todo.Id">
+        <input class="todo-items-checkbox" type="checkbox" />
+        <input @bind="todo.Title" class="form-control todo-items-item @TodoItemCssClass(todo.Status)"/>
+      </div>
+  }
+</div>
+
+@code {
+  private ICollection<TodoItem> Todos = new Collection<TodoItem>();
+  private string NewTodo;
+  private string TodoItemCssClass(TodoStatus status)
+    => status == TodoStatus.Completed ? "todo-items-item--completed" : "todo-items-item--active";
+
+  protected override async Task OnInitializedAsync()
+  {
+    Todos = (ICollection<TodoItem>) await queryHandler.GetTodoItems();
+  }
+
+    private void AddTodo() {
+      if(!string.IsNullOrWhiteSpace(NewTodo)) {
+        Todos.Add(new TodoItem
+        {
+          Id = Guid.NewGuid().ToString(),
+          Status = TodoStatus.Active,
+          Title = NewTodo
+        });
+        NewTodo = string.Empty;
+      }
+    }
+}

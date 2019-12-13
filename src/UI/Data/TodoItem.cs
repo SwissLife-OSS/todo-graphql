@@ -1,11 +1,29 @@
-using System;
+using SwissLife.OSS.TodoGraphQL.Client;
 
-namespace UI
+namespace TodoGraphQL.UI
 {
     public class TodoItem
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Title { get; set; }
-        public bool IsDone { get; set; }
+        public TodoStatus Status { get; set; }
+        public bool IsDone
+        {
+            get
+            {
+                return Status == TodoStatus.Completed;
+            }
+            set
+            {
+                if (value)
+                {
+                    Status = TodoStatus.Completed;
+                }
+                else
+                {
+                    Status = TodoStatus.Active;
+                }
+            }
+        }
     }
 }

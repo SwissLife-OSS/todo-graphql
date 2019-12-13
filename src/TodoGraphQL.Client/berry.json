@@ -1,0 +1,11 @@
+{
+  "Schemas": [
+    {
+      "Name": "TodoApp",
+      "Type": "http",
+      "File": "TodoApp.graphql",
+      "Url": "http://localhost:5000"
+    }
+  ],
+  "ClientName": "TodoAppClient"
+}
